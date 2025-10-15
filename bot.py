@@ -279,6 +279,7 @@ async def on_ready():
     logging.info(f'{bot.user} has connected to Discord!')
     Database.load_player_data()
     update_user_accounts()
+    await update_leaderboard()
     
     try:
         synced = await bot.tree.sync()
@@ -582,7 +583,7 @@ async def update_leaderboard():
         return
     
     update_user_accounts()
-    
+
     try:
         await channel.purge(limit=10)
     except:
