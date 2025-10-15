@@ -581,6 +581,8 @@ async def update_leaderboard():
     if not channel:
         return
     
+    update_user_accounts()
+    
     try:
         await channel.purge(limit=10)
     except:
